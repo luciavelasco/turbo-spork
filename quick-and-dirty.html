@@ -1,0 +1,118 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="chatwindow.css" media="all" rel="stylesheet" type="text/css" />
+	<title>Title</title>
+</head>
+<body>
+
+<style>
+.text-card {
+    border: solid 1px #e2e2e2;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    width: 300px;
+}
+
+.text-card-title {
+    font-weight: 600;
+    font-size: 8px;
+    margin-bottom: -10px;
+}
+
+.human .text-card-title {
+    color: #CB3B3D;
+}
+.bot .text-card-title {
+    color: #88B61F;
+}
+</style>
+<p></p>
+
+<p></p>
+
+<div style="font-family: arial,helvetica,sans-serif;">
+<p style="text-align: justify; margin-left: 40px;"></p>
+
+<div class="popup-wrapper">
+<p class="popup-header" style="text-align: center;"><span style="font-family:arial,helvetica,sans-serif;"><span style="color: rgb(85, 85, 85);">Talk to <span class="botname">Romy</span> </span></span></p>
+
+<div class="popup-header" style="margin-left: 40px;"></div>
+
+<div class="popup-header" style="margin-left: 40px; text-align: justify;"><span style="color: rgb(85, 85, 85);">Everyone says the human world is nothing but hatred, chaos and crime, can you convince me it&rsquo;s better than that?</span></div>
+&nbsp;
+
+<div class="popup-header"></div>
+
+<div class="popup-chat">
+<div class="convo scroll" id="out" style="overflow:auto"></div>
+
+<div class="popup-input">
+<form class="talk boxedin">
+<p style="margin-left: 40px;"><span style="color:#555555;"><input autofocus="" class="yousay form-control" placeholder="You say..." type="text" /> </span><!-- <input class="btn btn-default btn-sm talkButton" type="button" value="Talk"> --></p>
+</form>
+</div>
+</div>
+</div>
+
+<p><script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script><script>    
+    var talkURL = 'https://aiaas.pandorabots.com/talk/1409614163056/atts1?user_key=26afe4edd7bdaac5e7f7098e16e83065';
+    var sessionID = null
+
+    $(document).on('ready', function() {
+        console.log('init')
+        $('form').on('submit', function(e) {
+            e.preventDefault()
+            var question = $('input').val()
+            var url = talkURL
+            var data = {
+                input: question,
+                sessionid: sessionID
+            }
+            $('.scroll').append(
+                '<div class="human text-card">' +
+                '<p class="text-card-title">YOU</p>' +
+                '<p>' + question + '</p>' +
+                '</div>')
+                        $('#out').animate({scrollTop: $('#out').prop('scrollHeight')});
+            $.ajax({
+                url: url,
+                type: "POST",
+                crossDomain: true,
+                data: data,
+                dataType: "json",
+                success:function(result){
+                    $('.scroll').append(
+                        '<div class="bot text-card">' +
+                        '<p class="text-card-title">ROMY</p>' +
+                        '<p>' + result.responses[0] + '</p>' +
+                        '</div>')
+                    $('input').val('')
+                    sessionID = result.sessionid
+                                $('#out').animate({scrollTop: $('#out').prop('scrollHeight')});
+                },
+                error:function(xhr,status,error){
+                    console.log(status)
+                }
+            })
+        })
+    });
+</script></p>
+
+<p></p>
+
+<hr />
+<p><span style="font-family:arial,helvetica,sans-serif;"><em><span style="color: rgb(85, 85, 85);">If you get stuck ask me about:</span></em></span></p>
+
+<p><span style="font-family:arial,helvetica,sans-serif;"><span style="color: rgb(85, 85, 85);">/ prints / printesses / originals / Tom / Anne&nbsp;/ humans&nbsp;/ The Wall&nbsp;/ memory&nbsp;/ love&nbsp;/ help&nbsp;/ family&nbsp;/ feelings&nbsp;/ strangers&nbsp;/ friends&nbsp;/ change&nbsp;/ control&nbsp;/ logic&nbsp;/ perfect&nbsp;/ mistake</span> <span style="color: rgb(85, 85, 85);">/</span></span></p>
+
+<p><span style="font-family:arial,helvetica,sans-serif;"><a href="http://www.prettydigital.co.uk/spillbot/endromy.html" style="margin-left: 50px;"><span style="color: rgb(85, 85, 85);">Leave the story</span></a></span></p>
+</div>
+
+<p></p>
+
+<p></p>
+</body>
+</html>
