@@ -12,7 +12,7 @@
 </div>
 
 <div id="chat-feed">
-    
+    <!-- Where the chat cards will appear -->
 </div>
 
 <div class="chat-input">
@@ -77,12 +77,14 @@ $(document).on('ready', function() {
 <!-- not sure how much hr tags are used anymore -->
 <hr/>
 
+<!-- changed to footer because it's at the bottom and not part of the stuff going on in the game, but semantically should probably be a div because it's not used on every page, just the game page -->
 <footer>
     <p><em>If you get stuck ask me about:</em></p>
 
     <p>
     / prints / printesses / originals / Tom / Anne&nbsp;/ humans&nbsp;/ The Wall&nbsp;/ memory&nbsp;/ love&nbsp;/ help&nbsp;/ family&nbsp;/ feelings&nbsp;/ strangers&nbsp;/ friends&nbsp;/ change&nbsp;/ control&nbsp;/ logic&nbsp;/ perfect&nbsp;/ mistake
     </p>
+<!-- Changes link to button and removed default styles, see .exit-link css! -->
     <button class="exit-link"><a href="http://www.prettydigital.co.uk/spillbot/endromy.html">
     Leave the story
     </a></button>

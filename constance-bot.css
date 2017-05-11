@@ -1,3 +1,5 @@
+/* these styles apply to everything on the page, so I've attached them to the body
+   (although this is sometimes dubious practice, this power can be misused) */
 body {
 	font-family:arial,helvetica,sans-serif;
 	color: rgb(85, 85, 85);
@@ -12,6 +14,7 @@ body {
 	text-align: center;
 }
 
+/* The section that the responses will be sent into */
 #chat-feed {
     overflow: auto;
     margin-bottom: 10px;
@@ -19,6 +22,7 @@ body {
     width: 340px;
 }
 
+/* This is the bit that makes it look like a box */
 .text-card {
     border: solid 1px #e2e2e2;
     padding: 10px;
@@ -50,6 +54,7 @@ body {
     border: 1px solid #ACC999;
 }
 
+/* anchor tag is inside exit link */
 .exit-link a {
     text-decoration: none;
     font-weight: 600;
