@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="constance-bot.css" media="all" rel="stylesheet" type="text/css" />
+	<title>Romy Bot</title>
+</head>
+<body>
+<!-- Remove empty p tags -->
+<div>
+    <p class="bot-name">Talk to Romy</p>
+    <p class="bot-description">Everyone says the human world is nothing but hatred, chaos and crime, can you convince me it's better than that?</p>
+</div>
+
+<div id="chat-feed">
+    
+</div>
+
+<div class="chat-input">
+    <form>
+        <input autofocus="" id="prompt-text" placeholder="You say..." type="text" />
+        <input type="submit" value="Send"/>
+    </form>
+</div>
+
+<!-- Remove empty p tags -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" ></script>
+<script>    
+var talkURL = 'https://aiaas.pandorabots.com/talk/1409614163056/atts1?user_key=26afe4edd7bdaac5e7f7098e16e83065';
+var sessionID = null
+
+$(document).on('ready', function() {
+
+    $('form').on('submit', function(e) {
+        e.preventDefault()
+        var question = $('#prompt-text').val()
+        var url = talkURL
+        var data = {
+            input: question,
+            sessionid: sessionID
+        }
+        $('#chat-feed').append(
+            '<div class="human text-card">' +
+            '<p class="text-card-title">YOU</p>' +
+            '<p>' + question + '</p>' +
+            '</div>')
+        
+        $('#chat-feed').animate({scrollTop: $('#chat-feed').prop('scrollHeight')});
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            crossDomain: true,
+            data: data,
+            dataType: "json",
+            success:function(result) {
+
+                $('#chat-feed').append(
+                '<div class="bot text-card">' +
+                '<p class="text-card-title">ROMY</p>' +
+                '<p>' + result.responses[0] + '</p>' +
+                '</div>')
+
+                $('#prompt-text').val('')
+                sessionID = result.sessionid
+                $('#chat-feed').animate({
+                    scrollTop: $('#chat-feed').prop('scrollHeight')
+                });
+            },
+            error:function(xhr,status,error){
+                console.log(status)
+            }
+        })
+    })
+});
+</script>
+<!-- Remove empty p tags -->
+<!-- not sure how much hr tags are used anymore -->
+<hr/>
+
+<footer>
+    <p><em>If you get stuck ask me about:</em></p>
+
+    <p>
+    / prints / printesses / originals / Tom / Anne&nbsp;/ humans&nbsp;/ The Wall&nbsp;/ memory&nbsp;/ love&nbsp;/ help&nbsp;/ family&nbsp;/ feelings&nbsp;/ strangers&nbsp;/ friends&nbsp;/ change&nbsp;/ control&nbsp;/ logic&nbsp;/ perfect&nbsp;/ mistake
+    </p>
+    <button class="exit-link"><a href="http://www.prettydigital.co.uk/spillbot/endromy.html">
+    Leave the story
+    </a></button>
+</footer>
+
+<!-- Remove empty p tags -->
+</body>
+</html>

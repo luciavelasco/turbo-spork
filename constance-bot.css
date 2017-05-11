@@ -1,0 +1,55 @@
+body {
+	font-family:arial,helvetica,sans-serif;
+	color: rgb(85, 85, 85);
+	margin: 40px;
+}
+
+.bot-description {
+	text-align: justify;
+}
+
+.bot-name {
+	text-align: center;
+}
+
+#chat-feed {
+    overflow: auto;
+    margin-bottom: 10px;
+    height: 300px;
+    width: 340px;
+}
+
+.text-card {
+    border: solid 1px #e2e2e2;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    width: 300px;
+}
+
+.text-card-title {
+    font-weight: 600;
+}
+
+.human .text-card-title {
+    color: #CB3B3D;
+}
+.bot .text-card-title {
+	color: #88B61F;
+}
+
+#prompt-text {
+	color: #555555;
+}
+
+.exit-link {
+    padding: 9px;
+    border-radius: 10px;
+    background-color: #B6CD90;
+    border: 1px solid #ACC999;
+}
+
+.exit-link a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #666666;
+}
