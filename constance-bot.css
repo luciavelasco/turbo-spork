@@ -28,6 +28,8 @@ body {
 
 .text-card-title {
     font-weight: 600;
+    font-size: 8px;
+    margin-bottom: -10px;
 }
 
 .human .text-card-title {
